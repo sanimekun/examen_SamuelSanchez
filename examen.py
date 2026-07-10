@@ -71,6 +71,12 @@ def leer_opcion():
 def buscar_codigo(codigo, pelicula):
     """recorre el diccionario y retorno true si existe o es falso si no."""
     for k in pelicula.keys():
+        if k.upper() == codigo.upper():
+            return True
+        return False
+    
+def cupos_generos(genero, pelicula, cartelera):
+    """acumula y muestrael total de cupos disponibles por genero"""
         
 peliculas = {
 'P101': ['Luz de Otoño', 'drama', 110, 'B', 'Español', False],
@@ -109,3 +115,24 @@ if opcion == -1:
 if opcion == 1:
     genero = input("ingrese genero a consultar: ")
     cupos_genero(genero, peliculas, cartelera)
+    
+elif opcion == 2:
+    while True:
+        try:
+            p_min = int(input("ingrese precio minimo: "))
+            p_min = int(input("ingrese precio maximo: "))
+            break
+        except ValueError: 
+            print("debe ingresar valoreres enteros")
+            busqueda_precio(p_min, p_max, cartelera, peliculas)
+            
+elif opcion == 3:
+    while True:
+        codigo = input ("ingrese codigo de pelicula: ")
+        try:
+            nuevo_precio = int(input("ingrese nuevo precio: "))
+        except ValueError:
+            print("debe ingresar valores enteros")
+            
+        if nuevo_precio <= 0:
+            print("el precio debe ser un valor ") 
